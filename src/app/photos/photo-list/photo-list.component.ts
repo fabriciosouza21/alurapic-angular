@@ -10,16 +10,20 @@ import { PhotosService } from '../photos.service';
   styleUrls: ['./photo-list.component.css']
 })
 export class PhotoListComponent implements OnInit, OnDestroy {
-
+  hasMore = true;
+  correntPage = 1;
   title = 'alurapic';
+  userName = '';
   photos: Photo[] = [];
   filter: string = '';
   debounce : Subject<string> = new Subject<string>();
   constructor(
-    private routerlinkanctive : ActivatedRoute
+    private routerlinkanctive : ActivatedRoute,
+    private photoService: PhotosService
     ) { }
 
   ngOnInit(): void {
+    this.userName = this.routerlinkanctive.snapshot.params['userName'];
     this.photos = this.routerlinkanctive.snapshot.data['photos'];
     this.debounce
     .pipe(debounceTime(300))
@@ -35,4 +39,10 @@ export class PhotoListComponent implements OnInit, OnDestroy {
     this.debounce.unsubscribe();
   }
 
+  load() {
+    this.photoService.listFromUserPagenated(this.userName, ++this.correntPage).subscribe(photos => {
+      this.photos = this.photos.concat(photos);
+      if(!photos.length) this.hasMore = false;
+    });
+  }
 }
