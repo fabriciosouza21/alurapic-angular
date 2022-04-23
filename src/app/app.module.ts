@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorsModule } from './errors/errors.module';
 import { PhotosModule } from './photos/photos.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CardComponent } from './shared/componet/card/card.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { PhotosModule } from './photos/photos.module';
     BrowserModule,
     AppRoutingModule,
     PhotosModule,
-    ErrorsModule
+    ErrorsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

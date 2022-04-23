@@ -7,6 +7,8 @@ import { PhotoFormComponent } from './photo-form/photo-form.component';
 import { PhotosComponent } from './photo-list/photos/photos.component';
 import { FilterByDescriptionPipe } from './photo-list/filter-by-description.pipe';
 import { LoadButtonComponent } from './photo-list/load-button/load-button.component';
+import { CardModule } from '../shared/componet/card/card.module';
+import { SearchComponent } from './photo-list/search/search.component';
 
 
 
@@ -19,10 +21,12 @@ import { LoadButtonComponent } from './photo-list/load-button/load-button.compon
     PhotosComponent,
     FilterByDescriptionPipe,
     LoadButtonComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    CardModule
   ]
 })
 export class PhotosModule { }

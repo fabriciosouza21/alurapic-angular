@@ -9,7 +9,7 @@ import { PhotosService } from '../photos.service';
   templateUrl: './photo-list.component.html',
   styleUrls: ['./photo-list.component.css']
 })
-export class PhotoListComponent implements OnInit, OnDestroy {
+export class PhotoListComponent implements OnInit {
   hasMore = true;
   correntPage = 1;
   title = 'alurapic';
@@ -25,9 +25,6 @@ export class PhotoListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userName = this.routerlinkanctive.snapshot.params['userName'];
     this.photos = this.routerlinkanctive.snapshot.data['photos'];
-    this.debounce
-    .pipe(debounceTime(300))
-    .subscribe(filter => this.filter = filter);
     
   }
   onKeyUp(event: Event) {
@@ -35,14 +32,14 @@ export class PhotoListComponent implements OnInit, OnDestroy {
     this.debounce.next(filter);
   }
 
-  ngOnDestroy(): void {
-    this.debounce.unsubscribe();
-  }
-
   load() {
     this.photoService.listFromUserPagenated(this.userName, ++this.correntPage).subscribe(photos => {
       this.photos = this.photos.concat(photos);
       if(!photos.length) this.hasMore = false;
+      this.filter = '';
     });
+  }
+  filterAtrribuitter(event:any){
+    this.filter = event
   }
 }
