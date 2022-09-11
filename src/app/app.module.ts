@@ -6,6 +6,9 @@ import { ErrorsModule } from './errors/errors.module';
 import { PhotosModule } from './photos/photos.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CardComponent } from './shared/componet/card/card.component';
+import { SigninComponent } from './home/signin/signin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { CardComponent } from './shared/componet/card/card.component';
     AppRoutingModule,
     PhotosModule,
     ErrorsModule,
-    FontAwesomeModule
+    HomeModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
