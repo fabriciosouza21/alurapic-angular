@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/auth/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -12,9 +13,21 @@ export class SigninComponent implements OnInit {
     userName: ['',Validators.required],
     password: ['',Validators.required]
   });
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private authService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  login(){
+    const userName = this.userName?.value;
+    const password = this.password?.value;
+    this.authService.authenticate(userName, password).subscribe(
+      {
+        next: (v) => console.log(v),
+        complete : () => console.log('complete'),
+        error : err => console.log('error'),
+      }
+      );
   }
 
   get userName() { return this.loginForm.get('userName'); }
