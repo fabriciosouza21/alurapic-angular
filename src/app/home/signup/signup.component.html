@@ -48,7 +48,7 @@
             text="maximum length is 30 characters!" >
             </app-vmessage>
             <app-vmessage 
-            *ngIf="userName?.errors?.['pattern']" 
+            *ngIf="userName?.errors?.['lowerCase']" 
             text="Must be lower case ">
          </app-vmessage>
         </div>
