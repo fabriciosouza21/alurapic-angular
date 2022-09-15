@@ -9,6 +9,7 @@ import { CardComponent } from './shared/componet/card/card.component';
 import { SigninComponent } from './home/signin/signin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HomeModule } from './home/home.module';
     PhotosModule,
     ErrorsModule,
     HomeModule,
+    CoreModule,
     FontAwesomeModule,
   ],
   providers: [],
