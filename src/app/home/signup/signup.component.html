@@ -2,7 +2,7 @@
 
     <h4 class="text-center"> Register to embrace a new world!</h4>
 
-    <form [formGroup]="signupForm" class="form d-grid gap-3 col-12 mx-auto margem-topo">
+    <form [formGroup]="signupForm" class="form d-grid gap-3 col-12 mx-auto margem-topo" (submit)="signup()">
         <div class="form-group">
             <input formControlName="email" placeholder="email" class="form-control" autofocus>
             <app-vmessage *ngIf="email?.errors?.['required']" text="Email is required!">

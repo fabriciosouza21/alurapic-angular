@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { lowerCaseValidator } from '../../shared/validators/lower-case-validate';
-import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
+import { NewUser } from './interface/newUser';
+import { UserNotTakenValidatorService } from './services/user-not-taken.validator.service';
+import { SignupService } from './services/signup.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -34,7 +37,21 @@ export class SignupComponent  {
     ]]
   });
 
-  constructor(private fb: FormBuilder, private userNotTakenValidatorService :UserNotTakenValidatorService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private userNotTakenValidatorService :UserNotTakenValidatorService,
+    private signupService: SignupService,
+    private router: Router) { }
+
+  signup(){
+    const newUser = this.signupForm.getRawValue() as NewUser;
+    this.signupService
+      .signup(newUser)
+      .subscribe({
+        next: () => this.router.navigate(['']),
+        error: err => console.log(err)
+      });
+  }
 
   get email() { return this.signupForm.get('email'); }
 
