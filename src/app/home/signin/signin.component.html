@@ -2,7 +2,7 @@
 <h4 class="text-center magin-top">Login</h4>
 
 <form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
-    <div class="d-grid gap-3 col-6 mx-auto">
+    <div class="d-grid gap-3 mx-auto">
         <div class="form-group">
             <input #userNameInput formControlName="userName" class="form-control" placeholder="user name" autofocus>
             <app-vmessage 
@@ -29,5 +29,5 @@
 </form>
 
 <div class="d-grid gap-3 col-6 mx-auto">
-    <p>Not a user?<a>Register now</a></p>
+    <p>Not a user? <a [routerLink]="['signup']">Register now</a></p>
 </div>
