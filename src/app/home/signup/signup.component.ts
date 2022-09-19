@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { lowerCaseValidator } from '../../shared/validators/lower-case-validate';
+import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,6 +9,7 @@ import { lowerCaseValidator } from '../../shared/validators/lower-case-validate'
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent  {
+
 
   signupForm = this.fb.group({
     email: ['', [
@@ -24,7 +26,7 @@ export class SignupComponent  {
       lowerCaseValidator,
       Validators.minLength(2),
       Validators.maxLength(30)
-    ]],
+    ], this.userNotTakenValidatorService.checkUserNameTaken()],
     password: ['',[
       Validators.required,
       Validators.minLength(8),
@@ -32,7 +34,7 @@ export class SignupComponent  {
     ]]
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userNotTakenValidatorService :UserNotTakenValidatorService) { }
 
   get email() { return this.signupForm.get('email'); }
 
