@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { lowerCaseValidator } from '../../shared/validators/lower-case-validate';
 import { NewUser } from './interface/newUser';
 import { UserNotTakenValidatorService } from './services/user-not-taken.validator.service';
 import { SignupService } from './services/signup.service';
 import { Router } from '@angular/router';
+import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent  {
 
+export class SignupComponent implements  AfterViewInit {
+  @ViewChild('emailInput')
+  emailInput!: ElementRef<HTMLInputElement>;
 
   signupForm = this.fb.group({
     email: ['', [
@@ -41,7 +44,14 @@ export class SignupComponent  {
     private fb: FormBuilder, 
     private userNotTakenValidatorService :UserNotTakenValidatorService,
     private signupService: SignupService,
-    private router: Router) { }
+    private router: Router,
+    private platformDetectorService : PlatformDetectorService
+    ) { }
+  ngAfterViewInit(): void {
+    this.platformDetectorService.isPlatformBrowser() &&
+    this.emailInput.nativeElement.focus();
+  }
+
 
   signup(){
     const newUser = this.signupForm.getRawValue() as NewUser;
