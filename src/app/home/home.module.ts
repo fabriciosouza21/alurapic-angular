@@ -6,6 +6,7 @@ import { VmessageModule } from '../shared/componet/vmessage/vmessage.module';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { HomeRoutingModule } from './home.routing.module';
 
 
 @NgModule({
@@ -15,13 +16,15 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ReactiveFormsModule,
     VmessageModule, 
-    RouterModule 
+    RouterModule,
+    HomeRoutingModule
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    
   ]
 })
 export class HomeModule { }

@@ -11,10 +11,13 @@ import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent, 
-    canActivate: [AuthGuardService], 
-    children: [{ path: '', component: SigninComponent },
-    { path: 'signup', component: SignupComponent }]
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
+    path: 'home',  
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
 
   { path: 'user/:userName', component: PhotoListComponent, resolve: { photos: PhotoListResolver } },
