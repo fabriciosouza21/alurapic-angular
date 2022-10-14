@@ -10,6 +10,7 @@ import { PlatformDetectorService } from 'src/app/core/platform-detector/platform
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
+  providers: [UserNotTakenValidatorService],
   styleUrls: ['./signup.component.css']
 })
 
@@ -41,7 +42,7 @@ export class SignupComponent implements  AfterViewInit {
   });
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private userNotTakenValidatorService :UserNotTakenValidatorService,
     private signupService: SignupService,
     private router: Router,
