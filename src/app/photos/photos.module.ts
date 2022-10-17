@@ -11,6 +11,7 @@ import { CardModule } from '../shared/componet/card/card.module';
 import { SearchComponent } from './photo-list/search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VmessageModule } from '../shared/componet/vmessage/vmessage.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -31,7 +32,8 @@ import { VmessageModule } from '../shared/componet/vmessage/vmessage.module';
     CardModule,
     FormsModule,
     ReactiveFormsModule,
-    VmessageModule
+    VmessageModule,
+    RouterModule
   ]
 })
 export class PhotosModule { }
