@@ -17,10 +17,12 @@ export class HeaderComponent implements OnInit {
     private userService: UserService,
     private router: Router
     ) {
-    this.user$ = userService.getUser(); 
+      this.user$ = this.userService.getUser();
+
    }
 
   ngOnInit(): void {
+
   }
 
   logout(){

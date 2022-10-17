@@ -9,6 +9,8 @@ import { FilterByDescriptionPipe } from './photo-list/filter-by-description.pipe
 import { LoadButtonComponent } from './photo-list/load-button/load-button.component';
 import { CardModule } from '../shared/componet/card/card.module';
 import { SearchComponent } from './photo-list/search/search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VmessageModule } from '../shared/componet/vmessage/vmessage.module';
 
 
 
@@ -26,7 +28,10 @@ import { SearchComponent } from './photo-list/search/search.component';
   imports: [
     CommonModule,
     HttpClientModule,
-    CardModule
+    CardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    VmessageModule
   ]
 })
 export class PhotosModule { }
