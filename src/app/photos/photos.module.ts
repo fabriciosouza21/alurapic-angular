@@ -12,9 +12,8 @@ import { SearchComponent } from './photo-list/search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VmessageModule } from '../shared/componet/vmessage/vmessage.module';
 import { RouterModule } from '@angular/router';
-
-
-
+import { ImmediateClickModule } from '../shared/directives/immediate-click.directive';
+import { PhotosDetailsComponent } from './photos-details/photos-details.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +24,7 @@ import { RouterModule } from '@angular/router';
     FilterByDescriptionPipe,
     LoadButtonComponent,
     SearchComponent,
+    PhotosDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -33,7 +33,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     VmessageModule,
-    RouterModule
+    RouterModule,
+    ImmediateClickModule
   ]
 })
 export class PhotosModule { }

@@ -11,7 +11,7 @@ export class UserService {
 
   private userSubject = new BehaviorSubject<User>(null as any);
 
-  private userName = '' 
+  private userName = ''
 
   constructor(private tokenService: TokenService  ) {
     if(this.tokenService.hasToken()){
@@ -36,7 +36,7 @@ export class UserService {
       this.userName = user.name;
       this.userSubject.next(user);
     }
-    
+
   }
 
   logout(){

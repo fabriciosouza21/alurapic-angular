@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from '../core/auth/auth-guard.service';
+import { LoginGuardService } from '../core/auth/login-guard.service';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
     {
-        path: '', 
+        path: '',
         component: HomeComponent,
-        canActivate: [AuthGuardService],
+        canActivate: [LoginGuardService],
         children: [
             { path: '', component: SigninComponent },
             { path: 'signup', component: SignupComponent }
