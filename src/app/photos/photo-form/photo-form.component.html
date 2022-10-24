@@ -1,57 +1,72 @@
 <div class="container mt-5">
   <form [formGroup]="photoForm" class="row" (submit)="upload()">
-    <div class="col-md-6 text-center">
-      <input
-        formControlName="file"
-        (change)="fileChange($event)"
-        type="file"
-        accept="image/*">
-      <app-vmessage
-         text="Please, select a photo"
-         *ngIf="fileInupt?.errors?.['required']"
-        >
-
-      </app-vmessage>
-    </div>
-
     <div class="col-md-6">
-      <div class="form-group">
-        <textarea
-          class="form-control form-control-sm"
-          placeholder="photo description"
-          formControlName="description"
-          ></textarea>
-          <app-vmessage
-          text="Description is required"
-          *ngIf="description?.errors?.['required']"
-         >
-
-       </app-vmessage>
-
-       <app-vmessage
-       text="Description must have between 3 and 300 characters"
-       *ngIf="description?.errors?.['maxlength']"
-      >
-
-    </app-vmessage>
-
-
-      </div>
-
-      <div class="form-group">
-        <label class="text-muted">
-          Allow comments
+      <div class="form-group" >
+        <div class="" *ngIf="!preview; else previewImage">
+          <button type="button" (click)="fileInput.click()" class="btn btn-primary">
+            <i class="fa fa-image fa-4x align-middle"></i>
+        </button>
           <input
-           formControlName="allowComments"
-           type="checkbox">
-        </label>
+            #fileInput
+            hidden
+            formControlName="file"
+            (change)="fileChange($event)"
+            type="file"
+            accept="image/*">
+          <app-vmessage
+             text="Please, select a photo"
+             *ngIf="fileInupt?.errors?.['required']"
+            >
+
+          </app-vmessage>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <textarea
+              class="form-control form-control-sm"
+              placeholder="photo description"
+              formControlName="description"
+              ></textarea>
+              <app-vmessage
+              text="Description is required"
+              *ngIf="description?.errors?.['required']"
+             >
+
+           </app-vmessage>
+
+           <app-vmessage
+           text="Description must have between 3 and 300 characters"
+           *ngIf="description?.errors?.['maxlength']"
+          >
+
+        </app-vmessage>
+
+
+          </div>
+
+          <div class="form-group">
+            <label class="text-muted">
+              Allow comments
+              <input
+               formControlName="allowComments"
+               type="checkbox">
+            </label>
+          </div>
+
+          <button [disabled]="photoForm.invalid" type="submit" class="btn btn-primary btn-block">
+            Upload
+          </button>
+
+          <a class="btn btn-secondary btn-block">Cancel</a>
+        </div>
       </div>
-
-      <button [disabled]="photoForm.invalid" type="submit" class="btn btn-primary btn-block">
-        Upload
-      </button>
-
-      <a class="btn btn-secondary btn-block">Cancel</a>
     </div>
+
+    <ng-template #previewImage>
+      <div class="col-md-6 text-center">
+        <img class="img-thumbnail" [src]="preview" alt="">
+      </div>
+    </ng-template>
   </form>
 </div>

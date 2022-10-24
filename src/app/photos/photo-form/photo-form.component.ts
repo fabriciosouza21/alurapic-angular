@@ -11,6 +11,7 @@ import { PhotosService } from '../photos.service';
 export class PhotoFormComponent implements OnInit {
 
   file: File = {} as File;
+  preview = "";
 
   photoForm : FormGroup = this.fb.group({
     file: ['', Validators.required],
@@ -34,6 +35,9 @@ export class PhotoFormComponent implements OnInit {
 
   fileChange(event: any){
     this.file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event: any) => this.preview = event.target.result;
+    reader.readAsDataURL(this.file);
   }
 
   get fileInupt(){
