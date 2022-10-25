@@ -14,6 +14,7 @@ import { VmessageModule } from '../shared/componet/vmessage/vmessage.module';
 import { RouterModule } from '@angular/router';
 import { ImmediateClickModule } from '../shared/directives/immediate-click.directive';
 import { PhotosDetailsComponent } from './photos-details/photos-details.component';
+import { PhotoCommentsComponent } from './photos-details/photo-comments/photo-comments.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PhotosDetailsComponent } from './photos-details/photos-details.componen
     LoadButtonComponent,
     SearchComponent,
     PhotosDetailsComponent,
+    PhotoCommentsComponent,
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Photo } from './photo.interface';
+import { PhotoComment } from './photo-comment';
 
 @Injectable({
   providedIn: 'root'
@@ -29,4 +30,13 @@ export class PhotosService {
   findById(photoId: number){
     return this.http.get<Photo>(`http://localhost:3000/photos/${photoId}`);
   }
+
+  getComments(photoId: number){
+    return this.http.get<PhotoComment[]>(`http://localhost:3000/photos/${photoId}/comments`);
+  }
+
+  addComment(photoId: number, commentText: string){
+    return this.http.post(`http://localhost:3000/photos/${photoId}/comments`, {commentText});
+  }
+
 }
