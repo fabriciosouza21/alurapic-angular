@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Photo } from '../photo.interface';
+import { PhotosService } from '../photos.service';
 
 @Component({
   selector: 'app-photos-details',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhotosDetailsComponent implements OnInit {
 
-  constructor() { }
+  photo : Observable<Photo>
+  constructor(
+    private router: ActivatedRoute,
+    private photoService: PhotosService
+    ) {
+      this.photo = this.photoService.findById(
+        this.router.snapshot.params['photoId']
+      )
+     }
 
   ngOnInit(): void {
+
   }
 
 }
