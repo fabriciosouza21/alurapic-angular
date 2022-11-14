@@ -23,9 +23,12 @@ export class PhotoListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.userName = this.routerlinkanctive.snapshot.params['userName'];
-    this.photos = this.routerlinkanctive.snapshot.data['photos'];
-    
+    this.routerlinkanctive.params.subscribe(params => {
+      this.userName = this.routerlinkanctive.snapshot.params['userName'];
+      this.photos = this.routerlinkanctive.snapshot.data['photos'];
+    })
+
+
   }
   onKeyUp(event: Event) {
     let filter = (event.target as HTMLInputElement).value;

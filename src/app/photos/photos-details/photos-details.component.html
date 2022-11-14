@@ -8,9 +8,20 @@
       <small>
           <p class="text-left break-word">{{ photo.description }}</p>
           <hr>
+          <div class="text-left mb-4">
+            <i class="fa fa-comment-o fa-2x mr-2 ml-2 btn btn-secondary"></i>{{ photo.comments }}
+            <i (click)="remove(photo)" class="fa fa-trash-o fa-2x pull-right btn btn-danger"></i>
+          </div>
       </small>
 
-      <app-photo-comments [photoId]="photo.id"></app-photo-comments>
+      <app-photo-comments
+        [photoId]="photo.id"
+        *ngIf="photo.allowComments; else commentsDisabled">
+      >
+      </app-photo-comments>
+      <ng-template #commentsDisabled>
+        <p class="text-center">Comments are disabled</p>
+      </ng-template>
 
   </div><!-- col-md-4 -->
   </div>
