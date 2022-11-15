@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { ImmediateClickModule } from '../shared/directives/immediate-click.directive';
 import { PhotosDetailsComponent } from './photos-details/photos-details.component';
 import { PhotoCommentsComponent } from './photos-details/photo-comments/photo-comments.component';
+import { PhotoOwnerOnlyDirective } from './photos-details/photo-owner-only/photo-owner-only.directive';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PhotoCommentsComponent } from './photos-details/photo-comments/photo-co
     SearchComponent,
     PhotosDetailsComponent,
     PhotoCommentsComponent,
+    PhotoOwnerOnlyDirective
   ],
   imports: [
     CommonModule,
