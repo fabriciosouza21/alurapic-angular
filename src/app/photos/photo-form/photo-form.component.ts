@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PhotosService } from '../photos.service';
+import { AlertService } from '../../shared/component/alert/alert.service';
+import { UserService } from 'src/app/core/user/user.service';
 
 @Component({
   selector: 'app-photo-form',
@@ -19,7 +21,7 @@ export class PhotoFormComponent implements OnInit {
     allowComments: [true]
   });
 
-  constructor(private fb: FormBuilder, private photosService: PhotosService, private router : Router) { }
+  constructor(private fb: FormBuilder, private photosService: PhotosService, private router : Router, private alertService :AlertService, private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -29,7 +31,11 @@ export class PhotoFormComponent implements OnInit {
     const allowComments = this.photoForm.get('allowComments')?.value;
     this.photosService.upload(description, allowComments, this.file).
       subscribe({
-        next: ()=> this.router.navigate(['']),
+        next: ()=> {
+          this.alertService.success("Upload complete", true);
+          this.router.navigate(['/user', this.userService.getUserName()]);
+
+        },
       })
   }
 
