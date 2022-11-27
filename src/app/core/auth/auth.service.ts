@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
 import { UserService } from '../user/user.service';
+import { environment } from 'src/environments/environment';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = environment.apiURL;
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class AuthService {
       if(authToken){
         this.userService.setToken(authToken);
       }
-      
+
     }));
-  
+
   }
 }
