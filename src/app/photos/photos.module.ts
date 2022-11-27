@@ -12,10 +12,10 @@ import { SearchComponent } from './photo-list/search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VmessageModule } from '../shared/component/vmessage/vmessage.module';
 import { RouterModule } from '@angular/router';
-import { ImmediateClickModule } from '../shared/directives/immediate-click.directive';
 import { PhotosDetailsComponent } from './photos-details/photos-details.component';
 import { PhotoCommentsComponent } from './photos-details/photo-comments/photo-comments.component';
 import { PhotoOwnerOnlyDirective } from './photos-details/photo-owner-only/photo-owner-only.directive';
+import { ShowIfLoggedModule } from '../shared/directives/show-if-logged/show-if-logged.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { PhotoOwnerOnlyDirective } from './photos-details/photo-owner-only/photo
     ReactiveFormsModule,
     VmessageModule,
     RouterModule,
-    ImmediateClickModule
+    ShowIfLoggedModule
   ]
 })
 export class PhotosModule { }
